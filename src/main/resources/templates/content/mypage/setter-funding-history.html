@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,17 +50,17 @@
         <div class="col-lg-8 col-md-8 col-sm-8">
             <a style="margin-bottom: 20px; font-size: 18px;">나의 펀딩 내역 &gt; 펀딩 내역 조회 &gt; <b> 상세조회</b></a>
 
-            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;">등록일 2024-02-21</p>
+            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;">등록일 <span th:text="${ sttr.plgDttm }">2024-02-21</span></p>
 
             <div class="image-box">
                 <img th:src="@{/img/product/p1.png}" alt="product1">
                 <p class="image-desc">
                 <div>
-                    <strong class="info-item">펀딩명 </strong>: [개굴기업] 알뜰살뜰 모아모아 레인보우 협탁 <br>
-                    <strong class="info-item">선물명 </strong>: 레인보우 협탁<br>
-                    <strong class="info-item">달성률 </strong>: 71%<br>
-                    <strong class="info-item">달성금액 </strong>: 28,000,000<br>
-                    <strong class="info-item">펀딩 종료일 </strong>: 2024-04-24
+                    <strong class="info-item">펀딩명 </strong> <span th:text="${ fndName }">: [개굴기업] 알뜰살뜰 모아모아 레인보우 협탁 </span><br>
+                    <strong class="info-item">선물명 </strong><span th:text="${ giftName }">: 레인보우 협탁</span><br>
+                    <strong class="info-item">달성률 </strong><span th:text="${ ? }">: 71%</span><br>
+                    <strong class="info-item">달성금액 </strong><span th:text="${ successAmt }">: 28,000,000</span><br>
+                    <strong class="info-item">펀딩 종료일 </strong><span th:text="${ fndEndDt}">: 2024-04-24</span>
                 </div>
 
                 </p>
@@ -77,7 +77,7 @@
                         <div class="modal-button" style="justify-content: center;">
                             <!-- <button id="submit-btn" onclick='alert("아직 등록되지 않은 기능입니다.")'>등록</button> -->
                             <button id="submit-btn">등록</button>
-                            <button id="cancel-btn" onclick="closeModal()">취소</button>
+                            <button type="button" id="cancel-btn" onclick="closeModal()">취소</button>
                         </div>
                     </div>
                 </div>
@@ -93,15 +93,15 @@
                         <td>배송중</td>
                         <td>운송장번호</td>
                     </tr>
-                    <tr align="center">
+                    <tr align="center" th:each="plg : ${ plgList }">
                         <td><input type="radio" name="check" value="check"></td>
-                        <td>F-001</td>
-                        <td>김자바</td>
-                        <td>70000</td>
-                        <td>2024-02-01</td>
-                        <td>서울 광진구 종곡동 28-11</td>
-                        <td>배송중</td>
-                        <td class="trackingNumberCell" id="trackingNumberCell">123456789123</td>
+                        <td th:text="'F-' + ${ plg.fndCode }">F-001</td>
+                        <td th:text="${ plg.userName }">김자바</td>
+                        <td th:text="${ plg.plgPrice }">70000</td>
+                        <td th:text="${ plg.plgDttm }">2024-02-01</td>
+                        <td th:text="${ plg.userAdd }">서울 광진구 종곡동 28-11</td>
+                        <td th:text="${ plg.delivStat }">배송중</td>
+                        <td class="trackingNumberCell" id="trackingNumberCell" th:text="${ plg.trackingNo }">123456789123</td>
 
                     </tr>
                     <tr align="center">
