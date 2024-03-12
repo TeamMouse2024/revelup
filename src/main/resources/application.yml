@@ -38,3 +38,4 @@ kakao:
   approval_url: http://localhost:8080/content/pay/success
   cancel_url: http://localhost:8080/content/pay/cancel
   fail_url: http://localhost:8080/content/pay/fail
+

@@ -2,14 +2,12 @@ package com.revelup.mypage.controller;
 
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.mypage.model.service.MypageService;
-import com.revelup.pay.model.dto.PayDTO;
-import lombok.extern.log4j.Log4j;
+import com.revelup.pay.model.dto.PayCompletionDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.List;
@@ -33,7 +31,7 @@ public class MypageController {
         log.info("userId : {}", userId);
 
         try {
-            List<PayDTO> allPlgList = mypageService.selectAllPlgList(userId);
+            List<PayCompletionDTO> allPlgList = mypageService.selectAllPlgList(userId);
             model.addAttribute("allPlgList", allPlgList);
             log.info("allPlgList: {}", allPlgList);
             return "content/mypage/getter-ongoing";
@@ -49,7 +47,7 @@ public class MypageController {
         String userId = principal.getName();
         log.info("userId : {}", userId);
         try {
-            List<PayDTO> allPlgList = mypageService.selectRefundList(userId);
+            List<PayCompletionDTO> allPlgList = mypageService.selectRefundList(userId);
             model.addAttribute("allPlgList", allPlgList);
             log.info("allPlgList: {}", allPlgList);
             return "content/mypage/getter-refund";
@@ -65,7 +63,7 @@ public class MypageController {
         String userId = principal.getName();
         log.info("userId : {}", userId);
         try {
-            List<PayDTO> allPlgList = mypageService.selectFailFndList(userId);
+            List<PayCompletionDTO> allPlgList = mypageService.selectFailFndList(userId);
             model.addAttribute("allPlgList", allPlgList);
             log.info("allPlgList: {}", allPlgList);
             return "content/mypage/failed-funding";
@@ -81,7 +79,7 @@ public class MypageController {
         String userId = principal.getName();
         log.info("userId : {}", userId);
         try {
-            PayDTO selectOnePlg = mypageService.selectOnePlg(userId);
+            PayCompletionDTO selectOnePlg = mypageService.selectOnePlg(userId);
             model.addAttribute("selectOnePlg", selectOnePlg);
             log.info("selectOnePlg: {}", selectOnePlg);
             return "content/mypage/getter-spons-details";

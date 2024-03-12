@@ -48,7 +48,7 @@
     </resultMap>
 
     <!--    PLG ResultMap 후원 -->
-    <resultMap id="payResultMap" type="com.revelup.pay.model.dto.PayDTO">
+    <resultMap id="payResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">
         <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
         <result property="fndCode" column="FND_CODE" />
@@ -129,22 +129,22 @@
     </select>
 
 
-<!--    <select id="sttrFndPro" resultMap="com.revelup.funding.model.dao.FundingMapper">-->
-<!--        SELECT P.PLG_DTTM-->
-<!--        ,F.FND_NAME-->
-<!--        ,G.GIFT_NAME-->
-<!--        ,F.SUCCESS_AMT-->
-<!--        ,F.FND_END_DT-->
-<!--        ,FND_CODE-->
-<!--        ,U.USER_NAME-->
-<!--        ,P.PLG_PRICE-->
-<!--        ,P.PLG_DTTM-->
-<!--        ,U.USER_ADD-->
-<!--        ,D.DELIV_STAT-->
-<!--        ,D.TRACKING_NO-->
-<!--        FROM-->
-<!--        WHERE FND_CODE = @{ fndCode }-->
-<!--    </select>-->
+<!--    <select id="sttrFndPro" resultMap="com.revelup.funding.model.dao.FundingMapper">&ndash;&gt;
+     SELECT P.PLG_DTTM
+        ,F.FND_NAME
+        ,G.GIFT_NAME
+       ,F.SUCCESS_AMT
+      ,F.FND_END_DT
+       ,FND_CODE
+       ,U.USER_NAME
+        ,P.PLG_PRICE
+        ,P.PLG_DTTM
+       ,U.USER_ADD
+        ,D.DELIV_STAT
+        ,D.TRACKING_NO
+       FROM
+    WHERE FND_CODE = @{ fndCode }
+   </select>-->
 
 
 </mapper>
